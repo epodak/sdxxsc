@@ -6,11 +6,13 @@ from datetime import datetime
 import db_models
 from db_models import Product
 import ai_helper
+from utils.decorators import print_log
 
 # 确保数据库初始化
 db_models.init_db()
 
 # 添加新产品
+@print_log()
 def add_product(sku_id, product_type, category, product_name, short_description, 
                 base_price, pricing_model, applicable_industry, keywords):
     if not sku_id or not product_name:
@@ -299,6 +301,8 @@ with demo:
     gr.Markdown("# 选品工具 MVP")
     create_ui()
 
+
+# 测试装饰器
 # 启动应用
 if __name__ == "__main__":
     demo.launch()

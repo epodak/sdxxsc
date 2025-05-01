@@ -3,8 +3,10 @@ import sqlite3
 import json
 from typing import List, Dict, Any, Optional
 from datetime import datetime
+from utils.decorators import print_log
 
 # 数据库连接
+@print_log()
 def get_db_connection():
     """获取数据库连接"""
     # 确保data目录存在
@@ -16,6 +18,7 @@ def get_db_connection():
     return conn
 
 # 初始化数据库
+@print_log()
 def init_db():
     """初始化数据库表结构"""
     conn = get_db_connection()
@@ -157,6 +160,7 @@ def init_db():
     conn.close()
 
 # 产品类
+@print_log()
 class Product:
     """产品基本信息类"""
     
@@ -358,6 +362,7 @@ class Product:
         return products
 
 # 根据产品类型获取扩展信息的函数
+@print_log()
 def get_product_extension(sku_id: str, product_type: str) -> Dict[str, Any]:
     """根据产品类型获取扩展信息"""
     conn = get_db_connection()
